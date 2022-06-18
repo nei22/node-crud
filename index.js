@@ -3,10 +3,17 @@ const app = express()
 const port = 3000
 const hbs = require('express-handlebars')
 
+//CONFIG HANDLE-BARS
+app.engine('hbs', hbs.engine({
+    extname:'hbs',
+    defaultLayout:'main'
+})); app.set('view engine', 'hbs');
+
+
 app.get('/', (req, res)=>{
-    res.send('<h1>Ola mundo!</h1>')
+    res.render('index', {name:"Ednei"})
 
 })
 app.listen(port, ()=>{
-    console.log('Servidor rodando em http://localhost:3000');
+    console.log('Servidor rodando em http://localhost:'+port);
 })
